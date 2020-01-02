@@ -34,7 +34,7 @@
 // VL=128-bit  > Level 3: gather the zetas needed for level 3 for ZIP_ZETAS option
 #define GATHER128_ZETAS_LVL3\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\ "
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\ "
 
 // VL=256-bit and 512-bit and 1024-bit and 2048-bit > Level 3: gather the zetas needed for level 3 for ZIP_ZETAS option
 #define GATHER_ZETAS_LVL3\
@@ -43,14 +43,14 @@
 // VL=128-bit > Level 2: gather the zetas needed for level 2 for ZIP_ZETAS option
 #define GATHER128_ZETAS_LVL2\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\
       inch x13                                                                              \n\
-      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z29=zetas                     \n\ "
+      ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z29=zetas                   \n\ "
 
 // VL=256-bit > Level 2: gather the zetas needed for level 2 for ZIP_ZETAS option
 #define GATHER256_ZETAS_LVL2\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\ "
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\ "
 
 // VL=512-bit > Level 2: gather the zetas needed for level 2 for ZIP_ZETAS option
 #define GATHER512_ZETAS_LVL2\
@@ -70,25 +70,25 @@
 // VL=128-bit > Level 1: gather the zetas needed for level 1 for ZIP_ZETAS option
 #define GATHER128_ZETAS_LVL1\
   " inch x13                                                                                \n\
-    ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+    ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                       \n\
     inch x13                                                                                \n\
-    ld1h	{ z27.h }, p0/z, [%[zetas], x13, lsl #1]		//z27=zetas                     \n\
+    ld1h    { z27.h }, p0/z, [%[zetas], x13, lsl #1]        //z27=zetas                     \n\
     inch x13                                                                                \n\
-    ld1h	{ z28.h }, p0/z, [%[zetas], x13, lsl #1]		//z28=zetas                     \n\
+    ld1h    { z28.h }, p0/z, [%[zetas], x13, lsl #1]        //z28=zetas                     \n\
     inch x13                                                                                \n\
-    ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z29=zetas                     \n\ "
+    ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z29=zetas                     \n\ "
 
 // VL=256-bit > Level 1: gather the zetas needed for level 1 for ZIP_ZETAS option
 #define GATHER256_ZETAS_LVL1\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\
       inch x13                                                                              \n\
-      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z29=zetas                     \n\ "
+      ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z29=zetas                   \n\ "
 
 // VL=512-bit > Level 1: gather the zetas needed for level 1 for ZIP_ZETAS option
 #define GATHER_ZETAS_LVL1\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\ "
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\ "
 
 // VL=1024-bit > Level 1: gather the zetas needed for level 1 for ZIP_ZETAS option
 #define GATHER1024_ZETAS_LVL1\
@@ -110,36 +110,36 @@
 // VL=128-bit > Level 0: gather the zetas needed for level 0 for ZIP_ZETAS option
 #define GATHER128_ZETAS_LVL0\
   " inch x13                                                                                \n\
-    ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+    ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                       \n\
     inch x13                                                                                \n\
-    ld1h	{ z27.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\
+    ld1h    { z27.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                      \n\
     inch x13                                                                                \n\
-    ld1h	{ z28.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\
+    ld1h    { z28.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                      \n\
     inch x13                                                                                \n\
-    ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\ "
+    ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                      \n\ "
 
 // VL=256-bit > Level 0: gather the zetas needed for level 0 for ZIP_ZETAS option
 #define GATHER256_ZETAS_LVL0\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\
       inch x13                                                                              \n\
-      ld1h	{ z25.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\
+      ld1h    { z25.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                    \n\
       inch x13                                                                              \n\
-      ld1h	{ z26.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\
+      ld1h    { z26.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                    \n\
       inch x13                                                                              \n\
-      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\ "
+      ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                    \n\ "
 
 // VL=512-bit > Level 0: gather the zetas needed for level 0 for ZIP_ZETAS option
 #define GATHER_ZETAS_LVL0\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\
       inch x13                                                                              \n\
-      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                      \n\ "
+      ld1h    { z29.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                    \n\ "
 
 // VL=1024-bit > Level 0: gather the zetas needed for level 0 for ZIP_ZETAS option
 #define GATHER1024_ZETAS_LVL0\
     " inch x13                                                                              \n\
-      ld1h	{ z8.h }, p0/z, [%[zetas], x13, lsl #1]		//z8=zetas                          \n\ "
+      ld1h    { z8.h }, p0/z, [%[zetas], x13, lsl #1]        //z8=zetas                     \n\ "
 
 // VL=2048-bit > Level 0: gather the zetas needed for level 0 for ZIP_ZETAS option
 #define GATHER2048_ZETAS_LVL0\
@@ -281,27 +281,27 @@
 // r2_up: dest register to store r_up
 // r2_low: dest register to store r_low
 #define ITER(r_up, r_low, r2_up, r2_low)\
-    " ld1h	{ z8.h }, p0/z, [%[zetas_level], x13, lsl #1]		     //z2=zetas_level                      \n\
-      sunpklo	z14.s, z8.h										     //z4=lower of zetas_level             \n\
-      sunpkhi	z15.s, z8.h										     //z2=upper of zetas_level             \n\
-      sunpklo	z12.s, "r_up".h									     //z5=2/4 of *r                        \n\
-      sunpkhi	z13.s, "r_up".h									     //z3=3/4 of *r                        \n\
-      mul	z15.s, p0/m, z15.s, z13.s								 //z6=r[3/4] * zetas_level[up]         \n\
-      mul	z14.s, p0/m, z14.s, z12.s								 //z7=r[2/4] * zetas_level[low]        \n\
-      movprfx z12, z14																					   \n\
-	  mul	z12.s, p0/m, z12.s, z30.s								 //z7=multiplied[2/4] * QINV           \n\
-	  movprfx z13, z15																				       \n\
-      mul	z13.s, p0/m, z13.s, z30.s								 //z6=multiplied[3/4] * QINV           \n\
-      asr	z13.s, z13.s, #16										 //z6=t>>=16                           \n\
-      asr	z12.s, z12.s, #16										 //z7=t>>=16                           \n\
-      mul	z12.s, p0/m, z12.s, z31.s								 //z7=u[2/4] * KYBER_Q                 \n\
-      mul	z13.s, p0/m, z13.s, z31.s								 //z6=u[3/4] * KYBER_Q                 \n\
-      add z13.s, z13.s, z15.s																		       \n\
-      add z12.s, z12.s, z14.s																			   \n\
-	  uzp2	z12.h, z12.h, z13.h									     //z2=zipped t[low] and t[up]          \n\
-      inch x13														 //x8 + VL                             \n\
-      sub	"r2_up".h, "r_low".h, z12.h							     //z6=r - t                            \n\
-      add	"r2_low".h, "r_low".h, z12.h		  			         //z5=r + t                            \n\ "
+    " ld1h    { z8.h }, p0/z, [%[zetas_level], x13, lsl #1]              //z2=zetas_level                      \n\
+      sunpklo    z14.s, z8.h                                             //z4=lower of zetas_level             \n\
+      sunpkhi    z15.s, z8.h                                             //z2=upper of zetas_level             \n\
+      sunpklo    z12.s, "r_up".h                                         //z5=2/4 of *r                        \n\
+      sunpkhi    z13.s, "r_up".h                                         //z3=3/4 of *r                        \n\
+      mul    z15.s, p0/m, z15.s, z13.s                                   //z6=r[3/4] * zetas_level[up]         \n\
+      mul    z14.s, p0/m, z14.s, z12.s                                   //z7=r[2/4] * zetas_level[low]        \n\
+      movprfx z12, z14                                                                                         \n\
+      mul    z12.s, p0/m, z12.s, z30.s                                   //z7=multiplied[2/4] * QINV           \n\
+      movprfx z13, z15                                                                                         \n\
+      mul    z13.s, p0/m, z13.s, z30.s                                   //z6=multiplied[3/4] * QINV           \n\
+      asr    z13.s, z13.s, #16                                           //z6=t>>=16                           \n\
+      asr    z12.s, z12.s, #16                                           //z7=t>>=16                           \n\
+      mul    z12.s, p0/m, z12.s, z31.s                                   //z7=u[2/4] * KYBER_Q                 \n\
+      mul    z13.s, p0/m, z13.s, z31.s                                   //z6=u[3/4] * KYBER_Q                 \n\
+      add z13.s, z13.s, z15.s                                                                                  \n\
+      add z12.s, z12.s, z14.s                                                                                  \n\
+      uzp2    z12.h, z12.h, z13.h                                        //z2=zipped t[low] and t[up]          \n\
+      inch x13                                                           //x8 + VL                             \n\
+      sub    "r2_up".h, "r_low".h, z12.h                                 //z6=r - t                            \n\
+      add    "r2_low".h, "r_low".h, z12.h                                //z5=r + t                            \n\ "
 
 // VL=128-bit > Compute r_low and store half of the results in registers, this is an even level
 // for the LOAD_ZETAS option
@@ -405,82 +405,82 @@
 // r2_low: dest register to store r_low
 // zetas: src register of zetas
 #define ITER_ZIP_ZETAS(r_up, r_low, r2_up, r2_low, zeta)\
-    " sunpklo	z14.s, "zeta".h										//z4=lower of zetas_level                 \n\
-      sunpkhi	z15.s, "zeta".h										//z2=upper of zetaa_level                 \n\
-      sunpklo	z12.s, "r_up".h										//z5=2/4 of *r                            \n\
-      sunpkhi	z13.s, "r_up".h										//z3=3/4 of *r                            \n\
-      mul	z15.s, p0/m, z15.s, z13.s								//z6=r[3/4] * zetas_level[up]             \n\
-      mul	z14.s, p0/m, z14.s, z12.s								//z7=r[2/4] * zetas_level[low]            \n\
-      movprfx z12, z14																						  \n\
-	  mul	z12.s, p0/m, z12.s, z30.s								//z7=multiplied[2/4] * QINV               \n\
-	  movprfx z13, z15																						  \n\
-      mul	z13.s, p0/m, z13.s, z30.s								//z6=multiplied[3/4] * QINV               \n\
-      asr	z13.s, z13.s, #16										//z6=t>>=16                               \n\
-      asr	z12.s, z12.s, #16										//z7=t>>=16                               \n\
-      mul	z12.s, p0/m, z12.s, z31.s								//z7=u[2/4] * KYBER_Q                     \n\
-      mul	z13.s, p0/m, z13.s, z31.s								//z6=u[3/4] * KYBER_Q                     \n\
-      add z13.s, z13.s, z15.s																				  \n\
-      add z12.s, z12.s, z14.s																			      \n\
-			uzp2	z12.h, z12.h, z13.h								//z2=zipped t[low] and t[up]              \n\
-      sub	"r2_up".h, "r_low".h, z12.h							    //z6=r - t                                \n\
-      add	"r2_low".h, "r_low".h, z12.h		  			        //z5=r + t                                \n\ "
+    " sunpklo    z14.s, "zeta".h                                      //z4=lower of zetas_level                 \n\
+      sunpkhi    z15.s, "zeta".h                                      //z2=upper of zetaa_level                 \n\
+      sunpklo    z12.s, "r_up".h                                      //z5=2/4 of *r                            \n\
+      sunpkhi    z13.s, "r_up".h                                      //z3=3/4 of *r                            \n\
+      mul    z15.s, p0/m, z15.s, z13.s                                //z6=r[3/4] * zetas_level[up]             \n\
+      mul    z14.s, p0/m, z14.s, z12.s                                //z7=r[2/4] * zetas_level[low]            \n\
+      movprfx z12, z14                                                                                          \n\
+      mul    z12.s, p0/m, z12.s, z30.s                                //z7=multiplied[2/4] * QINV               \n\
+      movprfx z13, z15                                                                                          \n\
+      mul    z13.s, p0/m, z13.s, z30.s                                //z6=multiplied[3/4] * QINV               \n\
+      asr    z13.s, z13.s, #16                                        //z6=t>>=16                               \n\
+      asr    z12.s, z12.s, #16                                        //z7=t>>=16                               \n\
+      mul    z12.s, p0/m, z12.s, z31.s                                //z7=u[2/4] * KYBER_Q                     \n\
+      mul    z13.s, p0/m, z13.s, z31.s                                //z6=u[3/4] * KYBER_Q                     \n\
+      add z13.s, z13.s, z15.s                                                                                   \n\
+      add z12.s, z12.s, z14.s                                                                                   \n\
+            uzp2    z12.h, z12.h, z13.h                               //z2=zipped t[low] and t[up]              \n\
+      sub    "r2_up".h, "r_low".h, z12.h                              //z6=r - t                                \n\
+      add    "r2_low".h, "r_low".h, z12.h                             //z5=r + t                                \n\ "
 
 // VL=128-bit > Do one vector register's worth of butterfly operations of the NTTlevel using values loaded from memory
 // r2_up: dest register to store r_up
 // r2_low: dest register to store r_low
 #define ITER128_MEM(r2_up, r2_low)\
-    " ld1h	{ z8.h }, p0/z, [%[zetas_level], x13, lsl #1]		  //z2=zetas_level                      \n\
-      ld1h	{ z26.h }, p0/z, [x11, x8, lsl #1]		              //z3=r[up]                            \n\
-      ld1h	{ z25.h }, p0/z, [x9, x8, lsl #1]		              //z3=r[low]                           \n\
-      sunpklo	z14.s, z8.h										  //z4=lower of zetas_level             \n\
-      sunpkhi	z15.s, z8.h										  //z2=upper of zetas_level             \n\
-      sunpklo	z12.s, z26.h									  //z5=2/4 of *r                        \n\
-      sunpkhi	z13.s, z26.h									  //z3=3/4 of *r                        \n\
-      mul	z15.s, p0/m, z15.s, z13.s							  //z6=r[3/4] * zetas_level[up]         \n\
-      mul	z14.s, p0/m, z14.s, z12.s							  //z7=r[2/4] * zetas_level[low]        \n\
-      movprfx z12, z14																					\n\
-      mul	z12.s, p0/m, z12.s, z30.s							  //z7=multiplied[2/4] * QINV           \n\
-      movprfx z13, z15																					\n\
-      mul	z13.s, p0/m, z13.s, z30.s							  //z6=multiplied[3/4] * QINV           \n\
-      asr	z13.s, z13.s, #16									  //z6=t>>=16                           \n\
-      asr	z12.s, z12.s, #16									  //z7=t>>=16                           \n\
-      mul	z12.s, p0/m, z12.s, z31.s							  //z7=u[2/4] * KYBER_Q                 \n\
-      mul	z13.s, p0/m, z13.s, z31.s							  //z6=u[3/4] * KYBER_Q                 \n\
-      add z13.s, z13.s, z15.s																			\n\
-      add z12.s, z12.s, z14.s																			\n\
-      uzp2	z12.h, z12.h, z13.h									  //z2=zipped t[low] and t[up]          \n\
-      inch x13													  //x8 + VL                             \n\
-      inch x8													  //x8 + VL                             \n\
-      sub	"r2_up".h, z25.h, z12.h						    	  //z6=r - t                            \n\
-      add	"r2_low".h, z25.h, z12.h		  		    	      //z5=r + t                            \n\ "
+    " ld1h    { z8.h }, p0/z, [%[zetas_level], x13, lsl #1]         //z2=zetas_level                      \n\
+      ld1h    { z26.h }, p0/z, [x11, x8, lsl #1]                    //z3=r[up]                            \n\
+      ld1h    { z25.h }, p0/z, [x9, x8, lsl #1]                     //z3=r[low]                           \n\
+      sunpklo    z14.s, z8.h                                        //z4=lower of zetas_level             \n\
+      sunpkhi    z15.s, z8.h                                        //z2=upper of zetas_level             \n\
+      sunpklo    z12.s, z26.h                                       //z5=2/4 of *r                        \n\
+      sunpkhi    z13.s, z26.h                                       //z3=3/4 of *r                        \n\
+      mul    z15.s, p0/m, z15.s, z13.s                              //z6=r[3/4] * zetas_level[up]         \n\
+      mul    z14.s, p0/m, z14.s, z12.s                              //z7=r[2/4] * zetas_level[low]        \n\
+      movprfx z12, z14                                                                                    \n\
+      mul    z12.s, p0/m, z12.s, z30.s                              //z7=multiplied[2/4] * QINV           \n\
+      movprfx z13, z15                                                                                    \n\
+      mul    z13.s, p0/m, z13.s, z30.s                              //z6=multiplied[3/4] * QINV           \n\
+      asr    z13.s, z13.s, #16                                      //z6=t>>=16                           \n\
+      asr    z12.s, z12.s, #16                                      //z7=t>>=16                           \n\
+      mul    z12.s, p0/m, z12.s, z31.s                              //z7=u[2/4] * KYBER_Q                 \n\
+      mul    z13.s, p0/m, z13.s, z31.s                              //z6=u[3/4] * KYBER_Q                 \n\
+      add z13.s, z13.s, z15.s                                                                             \n\
+      add z12.s, z12.s, z14.s                                                                             \n\
+      uzp2    z12.h, z12.h, z13.h                                   //z2=zipped t[low] and t[up]          \n\
+      inch x13                                                      //x8 + VL                             \n\
+      inch x8                                                       //x8 + VL                             \n\
+      sub    "r2_up".h, z25.h, z12.h                                //z6=r - t                            \n\
+      add    "r2_low".h, z25.h, z12.h                               //z5=r + t                            \n\ "
 
 // VL=128-bit > Do one vector register's worth of butterfly operations of the NTTlevel using values loaded from memory for option ZIP_ZETAS
 // r2_up: dest register to store r_up
 // r2_low: dest register to store r_low
 // zetas: zetas register to use
 #define ITER128_ZIP_ZETAS_MEM(r2_up, r2_low, zeta)\
-  " ld1h	{ z26.h }, p0/z, [x11, x8, lsl #1]		              //z3=r[up]                            \n\
-    ld1h	{ z25.h }, p0/z, [x9, x8, lsl #1]		              //z3=r[low]                           \n\
-    sunpklo	z14.s, "zeta".h										  //z4=lower of zetas_level             \n\
-    sunpkhi	z15.s, "zeta".h										  //z2=upper of zetas_level             \n\
-    sunpklo	z12.s, z26.h									      //z5=2/4 of *r                        \n\
-    sunpkhi	z13.s, z26.h									      //z3=3/4 of *r                        \n\
-    mul	z15.s, p0/m, z15.s, z13.s								  //z6=r[3/4] * zetas_level[up]         \n\
-    mul	z14.s, p0/m, z14.s, z12.s								  //z7=r[2/4] * zetas_level[low]        \n\
-    movprfx z12, z14																					\n\
-    mul	z12.s, p0/m, z12.s, z30.s								  //z7=multiplied[2/4] * QINV           \n\
-    movprfx z13, z15																					\n\
-    mul	z13.s, p0/m, z13.s, z30.s								  //z6=multiplied[3/4] * QINV           \n\
-    asr	z13.s, z13.s, #16									      //z6=t>>=16                           \n\
-    asr	z12.s, z12.s, #16									      //z7=t>>=16                           \n\
-    mul	z12.s, p0/m, z12.s, z31.s								  //z7=u[2/4] * KYBER_Q                 \n\
-    mul	z13.s, p0/m, z13.s, z31.s								  //z6=u[3/4] * KYBER_Q                 \n\
-    add z13.s, z13.s, z15.s																				\n\
-    add z12.s, z12.s, z14.s																				\n\
-    uzp2	z12.h, z12.h, z13.h									  //z2=zipped t[low] and t[up]          \n\
-    inch x8														  //x8 + VL                             \n\
-    sub	"r2_up".h, z25.h, z12.h						    	      //z6=r - t                            \n\
-    add	"r2_low".h, z25.h, z12.h		  		    	          //z5=r + t                            \n\ "
+  " ld1h    { z26.h }, p0/z, [x11, x8, lsl #1]                      //z3=r[up]                            \n\
+    ld1h    { z25.h }, p0/z, [x9, x8, lsl #1]                       //z3=r[low]                           \n\
+    sunpklo    z14.s, "zeta".h                                      //z4=lower of zetas_level             \n\
+    sunpkhi    z15.s, "zeta".h                                      //z2=upper of zetas_level             \n\
+    sunpklo    z12.s, z26.h                                         //z5=2/4 of *r                        \n\
+    sunpkhi    z13.s, z26.h                                         //z3=3/4 of *r                        \n\
+    mul    z15.s, p0/m, z15.s, z13.s                                //z6=r[3/4] * zetas_level[up]         \n\
+    mul    z14.s, p0/m, z14.s, z12.s                                //z7=r[2/4] * zetas_level[low]        \n\
+    movprfx z12, z14                                                                                      \n\
+    mul    z12.s, p0/m, z12.s, z30.s                                //z7=multiplied[2/4] * QINV           \n\
+    movprfx z13, z15                                                                                      \n\
+    mul    z13.s, p0/m, z13.s, z30.s                                //z6=multiplied[3/4] * QINV           \n\
+    asr    z13.s, z13.s, #16                                        //z6=t>>=16                           \n\
+    asr    z12.s, z12.s, #16                                        //z7=t>>=16                           \n\
+    mul    z12.s, p0/m, z12.s, z31.s                                //z7=u[2/4] * KYBER_Q                 \n\
+    mul    z13.s, p0/m, z13.s, z31.s                                //z6=u[3/4] * KYBER_Q                 \n\
+    add z13.s, z13.s, z15.s                                                                               \n\
+    add z12.s, z12.s, z14.s                                                                               \n\
+    uzp2    z12.h, z12.h, z13.h                                     //z2=zipped t[low] and t[up]          \n\
+    inch x8                                                         //x8 + VL                             \n\
+    sub    "r2_up".h, z25.h, z12.h                                  //z6=r - t                            \n\
+    add    "r2_low".h, z25.h, z12.h                                 //z5=r + t                            \n\ "
 
 // VL=128-bit > Do a level of the NTT using values loaded from registers and put them
 // in specific registers by zipping them

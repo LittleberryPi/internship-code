@@ -105,8 +105,8 @@
 
 // VL=128-bit > Level 3: gather the zetas needed for level 3 for ZIP_ZETAS option invntt
 #define INVGATHER128_ZETAS_LVL3\
-  " inch x13 																	\n\
-  	ld1h	{ z8.h }, p1/z, [%[zetas_inv], x13, lsl #1]		//z8=zetas_inv      \n\ "
+  " inch x13 																	      \n\
+  	ld1h	{ z8.h }, p1/z, [%[zetas_inv], x13, lsl #1]		//z8=zetas_inv            \n\ "
 
 // VL=256-bit > Level 3: gather the zetas needed for level 3 for ZIP_ZETAS option invntt
 #define INVGATHER256_ZETAS_LVL3\
