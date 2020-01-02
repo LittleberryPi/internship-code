@@ -14,22 +14,22 @@
 
 // VL=128-bit > Compute and store r_up in memory dest for option ZIP_ZETAS
 #define STORE128_ZIP_ZETAS_RUP(dest, zeta, zeta2, zeta3, zeta4)\
-  " "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta)"                    \n\
-    "ZIP12("Z21", "Z22", "Z22", "Z23")"                            \n\
-    "STORE_TEMP("Z21", dest)"                                      \n\
-    "STORE_TEMP("Z22", dest)"                                      \n\
-    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta2)"                   \n\
-    "ZIP12("Z21", "Z22", "Z22", "Z23")"                            \n\
-    "STORE_TEMP("Z21", dest)"                                      \n\
-    "STORE_TEMP("Z22", dest)"                                      \n\
-    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta3)"                   \n\
-    "ZIP12("Z21", "Z22", "Z22", "Z23")"                            \n\
-    "STORE_TEMP("Z21", dest)"                                      \n\
-    "STORE_TEMP("Z22", dest)"                                      \n\
-    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta4)"                   \n\
-    "ZIP12("Z21", "Z22", "Z22", "Z23")"                            \n\
-    "STORE_TEMP("Z21", dest)"                                      \n\
-    "STORE_TEMP_LAST("Z22", dest)"                                 \n\ "
+  " "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta)"                      \n\
+    "ZIP12("Z21", "Z22", "Z22", "Z23")"                              \n\
+    "STORE_TEMP("Z21", dest)"                                        \n\
+    "STORE_TEMP("Z22", dest)"                                        \n\
+    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta2)"                     \n\
+    "ZIP12("Z21", "Z22", "Z22", "Z23")"                              \n\
+    "STORE_TEMP("Z21", dest)"                                        \n\
+    "STORE_TEMP("Z22", dest)"                                        \n\
+    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta3)"                     \n\
+    "ZIP12("Z21", "Z22", "Z22", "Z23")"                              \n\
+    "STORE_TEMP("Z21", dest)"                                        \n\
+    "STORE_TEMP("Z22", dest)"                                        \n\
+    "ITER128_ZIP_ZETAS_MEM("Z23", "Z22", zeta4)"                     \n\
+    "ZIP12("Z21", "Z22", "Z22", "Z23")"                              \n\
+    "STORE_TEMP("Z21", dest)"                                        \n\
+    "STORE_TEMP_LAST("Z22", dest)"                                   \n\ "
 
 // VL=128-bit > Compute and store r_up in memory dest
 #define STORE128_RUP(dest)\

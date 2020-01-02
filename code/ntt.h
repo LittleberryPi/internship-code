@@ -17,14 +17,14 @@
 // Store from src register to the temporary array (dest) with predicate p0
 #define STORE_TEMP(src, dest)\
     " st1h "src".h, p0, [%["dest"], x14, lsl #1] \n\
-      inch x14                                \n\ "
+      inch x14                                   \n\ "
 // Store from src register to the temporary array (dest) without inch at the end with predicate p0
 #define STORE_TEMP_LAST(src, dest)\
     " st1h "src".h, p0, [%["dest"], x14, lsl #1]  \n\ "
 
 // Store from src register to r with predicate p0
 #define STORE(src)\
-    " st1h "src".h, p0, [%[r], x8, lsl #1] \n\
+    " st1h "src".h, p0, [%[r], x8, lsl #1]   \n\
       inch x8                                \n\ "
 // Store to r without inch at the end with predicate p0
 #define STORE_LAST(src)\
@@ -32,16 +32,16 @@
 
 // Store from src register to r with predicate p1
 #define INVSTORE(src)\
-    " st1h "src".h, p1, [%[r], x8, lsl #1] \n\
+    " st1h "src".h, p1, [%[r], x8, lsl #1]   \n\
       inch x8                                \n\ "
 // Store to r without inch at the end with predicate p1
 #define INVSTORE_LAST(src)\
-    " st1h "src".h, p1, [%[r], x8, lsl #1]  \n\ "
+    " st1h "src".h, p1, [%[r], x8, lsl #1]   \n\ "
 
 // Store from src register to the temporary array (dest) with predicate p1
 #define INVSTORE_TEMP(src, dest)\
     " st1h "src".h, p1, [%["dest"], x14, lsl #1] \n\
-      inch x14                                \n\ "
+      inch x14                                   \n\ "
 // Store to the temporary array (dest) without inch at the end with predicate p1
 #define INVSTORE_TEMP_LAST(src, dest)\
     " st1h "src".h, p1, [%["dest"], x14, lsl #1]  \n\ "

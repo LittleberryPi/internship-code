@@ -117,7 +117,7 @@
       add	x10, %[r], #256          			    //x10=*r+256                          \n\
       ptrue	p0.h                                                                          \n\
       mov	z30.s, %w[qinv]							//z0=QINV                             \n\
-	  mov	z31.s, %w[kyber_q]					//z1=KYBER_Q                              \n\
+	  mov	z31.s, %w[kyber_q]					    //z1=KYBER_Q                          \n\
 	  "load"                                                                              \n\
       mov x8, xzr                                                                         \n\ "
 
@@ -125,12 +125,12 @@
 // for ZIP_ZETAS version
 // load: the macro for loading the elements of r
 #define INIT_R_AND_ZETAS(load)\
-	  "	mov	x8, xzr							//x8=0                              \n\
-      mov	x13, xzr						//x13=0                             \n\
-      ptrue	p0.h                                                                \n\
-      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z29=zetas         \n\
-      add	x10, %[r], #256          			            //x10=*r+256        \n\
-      mov	z30.s, %w[qinv]									//z0=QINV           \n\
-	  mov	z31.s, %w[kyber_q]								//z1=KYBER_Q        \n\
-	  "load"                                                                    \n\
-      mov x8, xzr                                                               \n\ "
+	  "	mov	x8, xzr							//x8=0                                        \n\
+      mov	x13, xzr						//x13=0                                       \n\
+      ptrue	p0.h                                                                          \n\
+      ld1h	{ z29.h }, p0/z, [%[zetas], x13, lsl #1]		//z29=zetas                   \n\
+      add	x10, %[r], #256          			            //x10=*r+256                  \n\
+      mov	z30.s, %w[qinv]									//z0=QINV                     \n\
+	  mov	z31.s, %w[kyber_q]								//z1=KYBER_Q                  \n\
+	  "load"                                                                              \n\
+      mov x8, xzr                                                                         \n\ "
