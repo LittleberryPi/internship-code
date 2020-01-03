@@ -191,42 +191,42 @@ void ntt_level_asm_auto(int16_t p_r[256], int16_t p_r2[256], int16_t zetas_level
     unsigned long len = 128;
 
     asm (
-        " mov	x8, xzr																//x8=0                                \n\
-        add	x10, %[p_r], #256          			      //x10=*p_r+256                        \n\
-        ptrue	p0.s                                                                      \n\
-        whilelo	p1.h, xzr, %[len]                                                       \n\
-        mov	z0.s, %w[qinv]												//z0=QINV                             \n\
-        mov	z1.s, %w[kyber_q]											//z1=KYBER_Q                          \n\
-        1:                                                                                \n\
-        ld1h	{ z2.h }, p1/z, [%[zetas_level], x8, lsl #1]		//z2=zetas_level          \n\
-        ld1h	{ z3.h }, p1/z, [x10, x8, lsl #1]		//z3=p_r[up]                          \n\
-        lsl	x11, x8, #33													//p_r2 (output_index)                 \n\
-        add	x11, %[p_r2], x11, asr #31						//p_r2 (output_index)                 \n\
-        sunpklo	z4.s, z2.h												//z4=lower of zetas_level             \n\
-        sunpkhi	z2.s, z2.h												//z2=upper of zetas_level             \n\
-        sunpklo	z5.s, z3.h												//z5=2/4 of *p_r                      \n\
-        sunpkhi	z3.s, z3.h												//z3=3/4 of *p_r                      \n\
-        movprfx	z6, z3														//z6=3/4 of *p_r                      \n\
-        mul	z6.s, p0/m, z6.s, z2.s								//z6=p_r[3/4] * zetas_level[up]       \n\
-        movprfx	z7, z5														//z7=lower half of *p_r               \n\
-        mul	z7.s, p0/m, z7.s, z4.s								//z7=p_r[2/4] * zetas_level[low]      \n\
-        mul	z7.s, p0/m, z7.s, z0.s								//z7=multiplied[2/4] * QINV           \n\
-        mul	z6.s, p0/m, z6.s, z0.s								//z6=multiplied[3/4] * QINV           \n\
-        asr	z6.s, z6.s, #16												//z6=t>>=16                           \n\
-        asr	z7.s, z7.s, #16												//z7=t>>=16                           \n\
-        mul	z7.s, p0/m, z7.s, z1.s								//z7=u[2/4] * KYBER_Q                 \n\
-        mul	z6.s, p0/m, z6.s, z1.s								//z6=u[3/4] * KYBER_Q                 \n\
-        mad	z2.s, p0/m, z3.s, z6.s								//z2=p_r[up] * zeta[up] + t[up]       \n\
-        movprfx	z3, z7														//z3=z7                               \n\
-        mla	z3.s, p0/m, z5.s, z4.s								//z3=t[low] + p_r[low] * zeta[low]    \n\
-        ld1h	{ z4.h }, p1/z, [%[p_r], x8, lsl #1]//z4=*p_r                             \n\
-        uzp2	z2.h, z3.h, z2.h										//z2=zipped t[low] and t[up]          \n\
-        inch	x8																	//x8 + VL                             \n\
-        sub	z6.h, z4.h, z2.h											//z6=p_r - t                          \n\
-        add	z5.h, z4.h, z2.h											//z5=p_r + t                          \n\
-        st2h	{ z5.h, z6.h }, p1, [x11]						//z5 -> p_r2[output_index]            \n\
-        whilelo	p1.h, x8, %[len]									//while x8 < len                      \n\
-        b.mi	1b"
+        " mov    x8, xzr                                                    //x8=0                                \n\
+        add    x10, %[p_r], #256                                            //x10=*p_r+256                        \n\
+        ptrue    p0.s                                                                                             \n\
+        whilelo    p1.h, xzr, %[len]                                                                              \n\
+        mov    z0.s, %w[qinv]                                               //z0=QINV                             \n\
+        mov    z1.s, %w[kyber_q]                                            //z1=KYBER_Q                          \n\
+        1:                                                                                                        \n\
+        ld1h    { z2.h }, p1/z, [%[zetas_level], x8, lsl #1]                //z2=zetas_level                      \n\
+        ld1h    { z3.h }, p1/z, [x10, x8, lsl #1]                           //z3=p_r[up]                          \n\
+        lsl    x11, x8, #33                                                 //p_r2 (output_index)                 \n\
+        add    x11, %[p_r2], x11, asr #31                                   //p_r2 (output_index)                 \n\
+        sunpklo    z4.s, z2.h                                               //z4=lower of zetas_level             \n\
+        sunpkhi    z2.s, z2.h                                               //z2=upper of zetas_level             \n\
+        sunpklo    z5.s, z3.h                                               //z5=2/4 of *p_r                      \n\
+        sunpkhi    z3.s, z3.h                                               //z3=3/4 of *p_r                      \n\
+        movprfx    z6, z3                                                   //z6=3/4 of *p_r                      \n\
+        mul    z6.s, p0/m, z6.s, z2.s                                       //z6=p_r[3/4] * zetas_level[up]       \n\
+        movprfx    z7, z5                                                   //z7=lower half of *p_r               \n\
+        mul    z7.s, p0/m, z7.s, z4.s                                       //z7=p_r[2/4] * zetas_level[low]      \n\
+        mul    z7.s, p0/m, z7.s, z0.s                                       //z7=multiplied[2/4] * QINV           \n\
+        mul    z6.s, p0/m, z6.s, z0.s                                       //z6=multiplied[3/4] * QINV           \n\
+        asr    z6.s, z6.s, #16                                              //z6=t>>=16                           \n\
+        asr    z7.s, z7.s, #16                                              //z7=t>>=16                           \n\
+        mul    z7.s, p0/m, z7.s, z1.s                                       //z7=u[2/4] * KYBER_Q                 \n\
+        mul    z6.s, p0/m, z6.s, z1.s                                       //z6=u[3/4] * KYBER_Q                 \n\
+        mad    z2.s, p0/m, z3.s, z6.s                                       //z2=p_r[up] * zeta[up] + t[up]       \n\
+        movprfx    z3, z7                                                   //z3=z7                               \n\
+        mla    z3.s, p0/m, z5.s, z4.s                                       //z3=t[low] + p_r[low] * zeta[low]    \n\
+        ld1h    { z4.h }, p1/z, [%[p_r], x8, lsl #1]                        //z4=*p_r                             \n\
+        uzp2    z2.h, z3.h, z2.h                                            //z2=zipped t[low] and t[up]          \n\
+        inch    x8                                                          //x8 + VL                             \n\
+        sub    z6.h, z4.h, z2.h                                             //z6=p_r - t                          \n\
+        add    z5.h, z4.h, z2.h                                             //z5=p_r + t                          \n\
+        st2h    { z5.h, z6.h }, p1, [x11]                                   //z5 -> p_r2[output_index]            \n\
+        whilelo    p1.h, x8, %[len]                                         //while x8 < len                      \n\
+        b.mi    1b"
         : /**no output**/
         : [p_r] "r" (p_r), [p_r2] "r" (p_r2), [zetas_level] "r" (zetas_level), [len] "r" (len),
         [qinv] "r" (-218038272), [kyber_q] "r" (-3329)
@@ -449,10 +449,6 @@ void ntt_asm_512(int16_t r[256], int16_t zetas_level[128]) {
             ZIP512
             "mov x8, xzr \n\ "
             STORE512
-            // "mov z8.h, #1 \n\
-            // mov z9.h, #2 \n\
-            // mov z10.d, z8.d \n\
-            // mul z10.h, p0/m, z10.h, z9.h "
             : /**no output**/
             : [r] "r" (r), [qinv] "r" (-218038272), [kyber_q] "r" (-3329), [zetas] "r" (zetas)
             : "memory", "x8", "x9", "x10", "x13", "z0", "z1", "z2", "z3", "z4", "z5", "z6",
@@ -747,53 +743,53 @@ void invntt_level_asm_auto(int16_t p_r[256], int16_t p_r2[256], int16_t zetas_le
     unsigned long len = 128;
 
     asm (
-      " mov	x8, xzr                                                                \n\
-    	add	x10, %[p_r], #256                                                      \n\
-    	ptrue	p0.s                                                               \n\
-    	ptrue	p1.h                                                               \n\
-    	whilelo	p2.h, xzr, %[len]                                                  \n\
-    	mov	z0.s, %w[v]                                                            \n\
-    	mov	z1.h, %w[kyber_q]                                                      \n\
-    	mov	z2.s, %w[qinv]                                                         \n\
-    	mov	z3.s, %w[kyber_q]                                                      \n\
-    1:                                                                             \n\
-    	lsl	x11, x8, #33                                                           \n\
-    	add	x11, %[p_r2], x11, asr #31                                             \n\
-    	ld1h	{ z4.h }, p2/z, [%[zetas_level], x8, lsl #1]                       \n\
-    	ld2h	{ z5.h, z6.h }, p2/z, [x11]                                        \n\
-    	sunpklo	z7.s, z4.h                                                         \n\
-    	add	z16.h, z6.h, z5.h                                                      \n\
-    	sub	z5.h, z5.h, z6.h                                                       \n\
-    	sunpkhi	z6.s, z16.h                                                        \n\
-    	sunpklo	z17.s, z16.h                                                       \n\
-    	mul	z17.s, p0/m, z17.s, z0.s                                               \n\
-    	mul	z6.s, p0/m, z6.s, z0.s                                                 \n\
-    	asr	z6.s, z6.s, #26                                                        \n\
-    	asr	z17.s, z17.s, #26                                                      \n\
-    	uzp1	z6.h, z17.h, z6.h                                                  \n\
-    	sunpkhi	z4.s, z4.h                                                         \n\
-    	sunpklo	z17.s, z5.h                                                        \n\
-    	sunpkhi	z5.s, z5.h                                                         \n\
-    	mad	z6.h, p1/m, z1.h, z16.h                                                \n\
-    	st1h	{ z6.h }, p2, [%[p_r], x8, lsl #1]                                 \n\
-    	movprfx	z6, z5                                                             \n\
-    	mul	z6.s, p0/m, z6.s, z4.s                                                 \n\
-    	movprfx	z16, z17                                                           \n\
-    	mul	z16.s, p0/m, z16.s, z7.s                                               \n\
-    	mul	z16.s, p0/m, z16.s, z2.s                                               \n\
-    	mul	z6.s, p0/m, z6.s, z2.s                                                 \n\
-    	asr	z6.s, z6.s, #16                                                        \n\
-    	asr	z16.s, z16.s, #16                                                      \n\
-    	mul	z16.s, p0/m, z16.s, z3.s                                               \n\
-    	mul	z6.s, p0/m, z6.s, z3.s                                                 \n\
-    	mad	z4.s, p0/m, z5.s, z6.s                                                 \n\
-    	movprfx	z5, z16                                                            \n\
-    	mla	z5.s, p0/m, z17.s, z7.s                                                \n\
-    	uzp2	z4.h, z5.h, z4.h                                                   \n\
-    	st1h	{ z4.h }, p2, [x10, x8, lsl #1]                                    \n\
-    	inch	x8                                                                 \n\
-    	whilelo	p2.h, x8, %[len]                                                   \n\
-    	b.mi	1b"
+      " mov    x8, xzr                                                                \n\
+        add    x10, %[p_r], #256                                                      \n\
+        ptrue    p0.s                                                                 \n\
+        ptrue    p1.h                                                                 \n\
+        whilelo    p2.h, xzr, %[len]                                                  \n\
+        mov    z0.s, %w[v]                                                            \n\
+        mov    z1.h, %w[kyber_q]                                                      \n\
+        mov    z2.s, %w[qinv]                                                         \n\
+        mov    z3.s, %w[kyber_q]                                                      \n\
+    1:                                                                                \n\
+        lsl    x11, x8, #33                                                           \n\
+        add    x11, %[p_r2], x11, asr #31                                             \n\
+        ld1h    { z4.h }, p2/z, [%[zetas_level], x8, lsl #1]                          \n\
+        ld2h    { z5.h, z6.h }, p2/z, [x11]                                           \n\
+        sunpklo    z7.s, z4.h                                                         \n\
+        add    z16.h, z6.h, z5.h                                                      \n\
+        sub    z5.h, z5.h, z6.h                                                       \n\
+        sunpkhi    z6.s, z16.h                                                        \n\
+        sunpklo    z17.s, z16.h                                                       \n\
+        mul    z17.s, p0/m, z17.s, z0.s                                               \n\
+        mul    z6.s, p0/m, z6.s, z0.s                                                 \n\
+        asr    z6.s, z6.s, #26                                                        \n\
+        asr    z17.s, z17.s, #26                                                      \n\
+        uzp1    z6.h, z17.h, z6.h                                                     \n\
+        sunpkhi    z4.s, z4.h                                                         \n\
+        sunpklo    z17.s, z5.h                                                        \n\
+        sunpkhi    z5.s, z5.h                                                         \n\
+        mad    z6.h, p1/m, z1.h, z16.h                                                \n\
+        st1h    { z6.h }, p2, [%[p_r], x8, lsl #1]                                    \n\
+        movprfx    z6, z5                                                             \n\
+        mul    z6.s, p0/m, z6.s, z4.s                                                 \n\
+        movprfx    z16, z17                                                           \n\
+        mul    z16.s, p0/m, z16.s, z7.s                                               \n\
+        mul    z16.s, p0/m, z16.s, z2.s                                               \n\
+        mul    z6.s, p0/m, z6.s, z2.s                                                 \n\
+        asr    z6.s, z6.s, #16                                                        \n\
+        asr    z16.s, z16.s, #16                                                      \n\
+        mul    z16.s, p0/m, z16.s, z3.s                                               \n\
+        mul    z6.s, p0/m, z6.s, z3.s                                                 \n\
+        mad    z4.s, p0/m, z5.s, z6.s                                                 \n\
+        movprfx    z5, z16                                                            \n\
+        mla    z5.s, p0/m, z17.s, z7.s                                                \n\
+        uzp2    z4.h, z5.h, z4.h                                                      \n\
+        st1h    { z4.h }, p2, [x10, x8, lsl #1]                                       \n\
+        inch    x8                                                                    \n\
+        whilelo    p2.h, x8, %[len]                                                   \n\
+        b.mi    1b"
         : /**no output**/
         : [p_r] "r" (p_r), [p_r2] "r" (p_r2), [zetas_level] "r" (zetas_level), [len] "r" (len),
         [qinv] "r" (-218038272), [kyber_q] "r" (-3329), [v] "r" (20159)
@@ -826,7 +822,7 @@ void invntt_asm_128(int16_t r[256]) {
         INVITER128_FROM_REG_LVL6("r2", "Z27", "Z8", "Z25", "Z26")
         // Iterate by loading from memory and storing to registers (r2_low) / memory (r2_up)
         " inch x13 \n\
-        ld1h	{ z27.h }, p1/z, [%[zetas_inv], x13, lsl #1] \n\ "
+        ld1h    { z27.h }, p1/z, [%[zetas_inv], x13, lsl #1] \n\ "
         INVGATHER128_ZETAS_LVL6
         INVITER128_FROM_MEM_LVL6("r", "r2", "Z27", "Z27", "Z8", "Z8", "Z25", "Z25", "Z26", "Z26")
         // Level 5-0

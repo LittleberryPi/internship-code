@@ -4,9 +4,6 @@ CFLAGS=-static -march=armv8.2-a+sve -O3 -Wall -Wextra
 SOURCES_GEM5_TEST= cbd.c fips202.c indcpa.c kem.c ntt_constant_geometry.c poly.c polyvec.c zetas.c PQCgenKAT_kem.c reduce.c rng.c verify.c symmetric-fips202.c m5op_arm_A64.S tiny-AES-c/aes.c
 HEADERS_GEM5_TEST= api.h cbd.h fips202.h indcpa.h ntt.h params.h poly.h polyvec.h reduce.h rng.h verify.h symmetric.h m5ops.h
 
-SOURCES = main.c cbd.c fips202.c poly.c zetas.c reduce.c symmetric-fips202.c ntt_constant_geometry.c
-HEADERS= cbd.h fips202.h ntt.h poly.h params.h reduce.h symmetric.h
-
 # The make targets for Kyber encryption with gem5 reset&dump for NTT
 m5_ntt_c_in_place: $(HEADERS_GEM5_TEST) $(SOURCES_GEM5_TEST)
 	$(CC) -o $@ $(SOURCES_GEM5_TEST) $(CFLAGS) -DGEM5_TEST_NTT -DNTT_INPLACE -DINVNTT_INPLACE
